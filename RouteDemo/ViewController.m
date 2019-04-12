@@ -49,8 +49,15 @@
 
 #pragma mark - 测试路由
 - (void)buttonAction1:(id)sender{
+    //一个参数
     NSString *customURL = @"wpfroutexx://FirstVC";
     [NSString OpenURLWithStr:customURL];
+    
+    //多个参数
+    NSString *moreParamURL = @"JLRouteSchemeTwo://TwoDetailViewController/我是userID/我是pwd";
+    // 中文传输需要进行转义
+    moreParamURL = [moreParamURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:moreParamURL]];
 }
 
 @end

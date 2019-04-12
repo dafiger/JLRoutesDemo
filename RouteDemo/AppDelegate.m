@@ -27,10 +27,18 @@
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    NSLog(@"1从哪个app跳转而来 Bundle ID: %@", options);
-    NSLog(@"URL:%@, Scheme:%@", url, [url scheme]);
+//    NSLog(@"1从哪个app跳转而来 Bundle ID: %@", options);
+//    NSLog(@"URL:%@, Scheme:%@", url, [url scheme]);
 //    return YES;
-    return [self applicationOpenURL:url];
+    
+    NSLog(@"Calling Application Bundle ID: %@", options);
+    NSLog(@"URL scheme: %@", [url scheme]);
+    NSLog(@"URL query: %@", [url query]);
+    
+    NSString *urlSchemeStr = [[url scheme] lowercaseString]; // url scheme 转换为小写的字符串
+    NSLog(@"urlSchemeStr: %@",urlSchemeStr);
+    
+    return [self applicationOpenURL:url Scheme:urlSchemeStr];
 }
 
 //- (BOOL)application:(UIApplication*)application
